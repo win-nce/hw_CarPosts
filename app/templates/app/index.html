@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+    <div class="logo">Auto Market</div>
+    <span>
+        <ul>
+            <li><a href="#">Каталог</a></li>
+            <li><a href="#">Профиль</a></li>
+        </ul>
+    </span>
+</header>
+<main>
+    <div class="cards">
+        {% for card in cards %}
+        <div class="card">
+            {% if card.url %}
+                <img src="{{ card.url.url }}" alt="{{ card.title }}">
+            {% else %}
+                <p>Нет изображения</p>
+            {% endif %}
+            <h2>{{ card.title }}</h2>
+            <p>{{ card.description }}</p>
+            <p><strong>Параметры:</strong> {{ card.parameters }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+</body>
+</html>
